@@ -1,0 +1,25 @@
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Create a dictionary with data on cigarettes per day and lung cancer
+data = {
+    'cigarettes_per_day': np.arange(5, 51, 5),
+    'lung_cancer': np.array([0, 0, 0, 1, 0, 1, 1, 1, 1, 1])
+}
+
+# Create a Pandas DataFrame
+df = pd.DataFrame(data)
+
+# Calculate the correlation coefficient
+correlation = df['cigarettes_per_day'].corr(df['lung_cancer'])
+print(f'Correlation coefficient: {correlation:.2f}')  # Format the correlation to 2 decimal places
+
+# Plot the scatter plot
+plt.figure(figsize=(8, 6))
+plt.scatter(df['cigarettes_per_day'], df['lung_cancer'], color='blue')
+plt.title('Scatter Plot of Cigarettes per Day vs Lung Cancer')
+plt.xlabel('Cigarettes per Day')
+plt.ylabel('Lung Cancer (0: No, 1: Yes)')
+plt.show()
