@@ -1,0 +1,43 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+data = {
+    'month': pd.date_range(start='2023-01-01', periods=12, freq='M').month_name(),
+    'temperature': np.random.uniform(0, 30, 12),  # Temperature in degrees Celsius
+    'rainfall': np.random.uniform(20, 200, 12)  # Rainfall in millimeters
+}
+
+df = pd.DataFrame(data)
+
+plt.figure(figsize=(12, 6))
+plt.plot(df['month'], df['temperature'], marker='o', linestyle='-', color='orange')
+plt.title('Monthly Temperature')
+plt.xlabel('Month')
+plt.ylabel('Temperature (°C)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(12, 6))
+plt.plot(df['month'], df['rainfall'], marker='o', linestyle='-', color='blue')
+plt.title('Monthly Rainfall')
+plt.xlabel('Month')
+plt.ylabel('Rainfall (mm)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(12, 6))
+plt.scatter(df['month'], df['temperature'], color='orange')
+plt.title('Monthly Temperature Scatter Plot')
+plt.xlabel('Month')
+plt.ylabel('Temperature (°C)')
+plt.grid(True)
+plt.show()
+
+plt.figure(figsize=(12, 6))
+plt.scatter(df['month'], df['rainfall'], color='blue')
+plt.title('Monthly Rainfall Scatter Plot')
+plt.xlabel('Month')
+plt.ylabel('Rainfall (mm)')
+plt.grid(True)
+plt.show()
