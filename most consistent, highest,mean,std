@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+
+data = {
+    'Day': range(1, 366),
+    'CityA': np.random.randint(15, 30, 365),
+    'CityB': np.random.randint(20, 35, 365),
+    'CityC': np.random.randint(10, 25, 365)
+}
+
+df = pd.DataFrame(data)
+
+df_temp = df.drop(columns=['Day'])
+
+mean_temps = df_temp.mean()
+print("Mean Temperature for Each City:")
+print(mean_temps)
+
+std_devs = df_temp.std()
+print("\nStandard Deviation of Temperature for Each City:")
+print(std_devs)
+
+temp_ranges = df_temp.max() - df_temp.min()
+print("\nTemperature Range for Each City:")
+print(temp_ranges)
+
+city_highest_range = temp_ranges.idxmax()
+print(f"\nCity with the Highest Temperature Range: {city_highest_range}")
+
+city_most_consistent = std_devs.idxmin()
+print(f"City with the Most Consistent Temperature: {city_most_consistent}")
